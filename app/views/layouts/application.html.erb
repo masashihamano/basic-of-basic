@@ -2,14 +2,21 @@
 <html>
   <head>
     <title>Basic</title>
+    <meta name="description" content="入会フォームです">
+    <meta name="keywords" content="会員,登録">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+
     <%= yield %>
+
+
   </body>
 </html>
