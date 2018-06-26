@@ -1,0 +1,161 @@
+<div class="container">
+  <header>
+    <div class="row">
+      <div class="col-md-8 col-sm-4 col-xs-6">
+          <h1>ご利用アンケート</h1>
+      </div>
+      <div class="col-md-4 col-sm-8 col-xs-6 align-right">
+        <a href="/">HOME へ戻る </a>
+      </div>
+    </div>
+  </header>
+</div><!-- container1 -->
+
+
+<!-- <hr>
+<div class="container">
+  <form action="https://book.h2o-space.com/html/form.php" method="post" class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <p>この度は、本書をご利用いただきありがとうございます。恐れ入りますが、以下のフォームにご記入いただき、送信していただけると幸いです。
+      </p>
+
+      <div class="form-group">
+        <label for="name">お名前 <span class="badge badge-danger">必須</span></label>
+        <input type="text" id="name" name="name" class="form-control" placeholder="例）山田 太郎" required>
+      </div>
+
+      <div class="form-group">
+        <label for="job">ご職業</label>
+        <select id="job" name="job" class="form-control">
+          <option value="">選択して下さい</option>
+          <option value="会社員">会社員</option>
+          <option value="学生">学生</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>知りたい内容（複数回答可）</label>
+        <div class="checkbox-inline">
+          <label>
+            <input type="checkbox" name="q1" value="html"> HTML
+          </label>
+        </div>
+        <div class="checkbox-inline">
+          <label>
+            <input type="checkbox" name="q1" value="css"> CSS
+          </label>
+        </div>
+        <div class="checkbox-inline">
+          <label>
+            <input type="checkbox" name="q1" value="javascript"> JavaScript
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>理解度はいかがですか？</label>
+        <div>
+          <label class="radio-inline">
+            <input type="radio" name="q2" id="q2_1" value="1"> 理解できなかった
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="q2" id="q2_2" value="2"> だいたい理解できた
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="q2" id="q2_3" value="3"> 理解できた
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="q2" id="q2_4" value="" checked> 回答しない
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">ご意見</label>
+        <textarea name="message" id="message" rows="10" class="form-control"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg">送信する</button>
+
+    </div>
+  </form>
+</div>
+<hr> -->
+
+
+
+
+
+<%# if false %>
+
+<hr>
+<div class="container">
+  <%= form_for @form do |f| %>
+    <div class="col-sm-8 col-sm-offset-2">
+      <p>この度は、本書をご利用いただきありがとうございます。恐れ入りますが、以下のフォームにご記入いただき、送信していただけると幸いです。
+      </p>
+
+      <div class="form-group">
+        <label for="name">お名前<span class="badge badge-danger"> 必須</span></label>
+        <%= f.text_field :name, placeholder:"例: 山田太郎", class: "form-control", required: "true" %>
+      </div>
+
+      <div class="form-group">
+        <label for="job">ご職業</label></br>
+        <%= f.select :career, [["会社員","会社員"],["学生","学生"],["その他","その他"]], {prompt:"選択して下さい"}, {required:'true', autofocus: 'true', class: 'form-controll'} %>
+      </div>
+
+      <div class="form-group">
+        <label for="language">知りたい内容(複数回答可)</label>
+        <div class="checkbox-inline">
+          <%= check_box_tag :language %>
+          <%= label_tag :language, "HTML" %>
+        </div>
+        <div class="checkbox-inline">
+          <%= check_box_tag :language %>
+          <%= label_tag :language, "CSS" %>
+        </div>
+        <div class="checkbox-inline">
+          <%= check_box_tag :language %>
+          <%= label_tag :language, "JavaScript" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div for="understand">理解度はいかがですか？</div>
+        <label class="radio-inline">
+          <%= f.radio_button :understand, id:'q2_1',value:0 %> 理解できなかった
+        </label>
+        <label class="radio-inline">
+          <%= f.radio_button :understand, id:'q2_2',value:1 %> だいたい理解できた
+        </label>
+        <label class="radio-inline">
+          <%= f.radio_button :understand, id:'q2_3',value:3 %> 理解できた
+        </label>
+        <label class="radio-inline">
+          <%= f.radio_button :understand, {id:'q2_4',value:0, checked: true} %> 回答しない
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="opinion">ご意見</label>
+        <%= f.text_area :opinion, id:'opinion',  rows:8, class: 'form-control' %>
+      </div>
+
+      <%= f.submit "送信する", class: "btn btn-success btn-lg" %>
+
+    </div>
+  <% end %>
+</div>
+<hr>
+
+<%# end %>
+
+
+<div class="container">
+  <footer>
+    <p>&copy; H20 space </p>
+  </footer>
+
+</div><!-- container2 -->
