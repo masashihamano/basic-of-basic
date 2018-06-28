@@ -1,0 +1,29 @@
+<header>
+  <h1>TODAY</h1>
+</header>
+
+<div class="container">
+  <script>
+
+    // var answer = 10 + 3;
+    // document.write('10+3の結果は' + answer + 'です');
+    //
+    // answer = 10-3;
+    // document.write('<br>10-3='  + answer);
+    //
+    // answer = answer + 10;
+    // document.write('<br>7+10=' + answer);
+
+    // var today = new Date(); //今現在
+    // var newYear = new Date(2018, 1, 1); //任意の日時
+    //
+    // document.write('<p>今日は' + today.getDate() + '日です</p>');
+    // document.write('<p>元旦は' + newYear.getDate() + '日です</p>');
+
+    var today = new Date();
+    var todayHtml = today.getFullYear() + '/' + (today.getMonth()+1) + '/' + today.getDate();
+
+    document.write('<p class="date">' + todayHtml + '</p>');
+
+  </script>
+</div>

@@ -1,0 +1,113 @@
+<div class="container">
+  <p id="timer">00:00:00</p>
+
+
+  <div>
+    <button id="start_stop" class="btn btn-lg btn-primary">START</button>
+  </div>
+
+</div>
+
+
+
+
+<!-- <script>
+  document.write('<p id="timer">00:00:00</p>');
+  // document.write('<p id="timer">00:01:00</p>');
+</script> -->
+
+<!-- <script>
+  document.getElementById('timer').remove();
+</script> -->
+
+<!-- <script>
+//ゼロを追加する
+// function addZero(value) {  ←こっちでも可
+var addZero = function(value) {
+  if (value < 10) {
+    value = '0' + value;
+  }
+  return value;
+};
+
+document.getElementById('start_stop').addEventListener('click', function(){
+
+  var now = new Date(); //Dateオブジェクトのインスタンス化
+
+  var seconds = now.getSeconds(); //秒を取得する
+  seconds = addZero(seconds); //addZeroファンクションを利用
+  // if (seconds < 10 ) {
+  //   seconds = '0' + seconds;
+  // }
+
+  var minutes = now.getMinutes();  //分を取得する
+  minutes = addZero(minutes);//addZeroファンクションを利用
+  // if (minutes < 10) {
+  //   minutes = '0' + minutes;
+  // }
+
+  var hours = now.getHours();  //時を取得する
+  hours = addZero(hours); //addZeroファンクションを利用
+  // if (hours < 10) {
+  //   hours = '0' + hours;
+  // }
+
+  document.getElementById('timer').innerHTML = hours + '+' + minutes + '+' + seconds;
+});
+
+</script> -->
+
+<script>
+
+var start; //開始時間(グローバル変数)
+
+var addZero = function(value) { //ゼロを追加する
+  if (value < 10) {
+    value = '0' + value;
+  }
+  return value;
+};
+
+var timer_id;
+
+document.getElementById('start_stop').addEventListener('click', function() {
+  if (this.innerHTML === 'START') {
+    start = new Date();
+
+    timer_id = setInterval(goTimer, 10);
+
+    //stopボタンにする
+    this.innerHTML = 'STOP';
+    this.classList.remove('btn-primary');
+    this.classList.add('btn-danger');
+  } else {
+    clearInterval(timer_id);
+    //STARTボタンにする
+    this.innerHTML = 'START';
+    this.classList.remove('btn-danger');
+    // this.classList.add('btn-default');
+    this.classList.add('btn-primary');
+  }
+});
+
+//タイマーの処理
+var goTimer = function() {
+  var now = new Date();
+
+  var milli = now.getTime() - start.getTime();  //ミリ秒で
+  var seconds = Math.floor(milli / 1000); //秒を取得
+  var minutes = Math.floor(seconds / 60); //分を取得
+  var hours = Math.floor(minutes / 60); //時間を取得
+
+  seconds = seconds - minutes * 60;
+  minutes = minutes - hours * 60;
+
+  //1桁の場合は頭に0を付ける
+  hours = addZero(hours);
+  seconds = addZero(seconds);
+  minutes = addZero(minutes);
+
+  // document.getElementById('timer').innerHTML = now.getTime() - start.getTime();
+  document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
+}
+</script>
